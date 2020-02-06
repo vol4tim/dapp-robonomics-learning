@@ -6,12 +6,25 @@
 </template>
 
 <script>
+import Vue from "vue";
+import { init as initRobonomics } from "./utils/robonomics";
+import { init as initWeb3 } from "./utils/web3";
+import { init as initIpfs } from "./utils/ipfs";
 import Demand from "./components/Demand.vue";
 
 export default {
   name: "app",
   components: {
     Demand
+  },
+  async created() {
+    const web3 = await initWeb3();
+    const ipfs = await initIpfs();
+    const accounts = await web3.eth.getAccounts();
+    Vue.prototype.$robonomics = initRobonomics(web3, ipfs, accounts[0]);
+    this.$robonomics.ready().then(() => {
+      // готово
+    });
   }
 };
 </script>

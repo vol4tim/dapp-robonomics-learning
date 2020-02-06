@@ -9,7 +9,9 @@
   },
   "dependencies": {
     "core-js": "^3.4.4",
-    "vue": "^2.6.10"
+    "robonomics-js": "^0.6.1",
+    "vue": "^2.6.10",
+    "web3": "^1.2.6"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.1.0",
